@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lokyoung/vuejs-paginate.git"
+    "url": "git+https://github.com/s8n11c/vuejs-paginate.git"
   },
   "keywords": [
     "vue",
@@ -20,7 +20,7 @@
   "author": "s8n11c",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lokyoung/vuejs-paginate/issues"
+    "url": "https://github.com/s8n11c/vuejs-paginate/issues"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
