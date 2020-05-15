@@ -1,38 +1,38 @@
 <template>
   <ul :class="containerClass" v-if="!noLiSurround">
     <li v-if="firstLastButton" :class="[pageClass, firstPageSelected() ? disabledClass : '']">
-      <a @click="selectFirstPage()" @keyup.enter="selectFirstPage()" :class="pageLinkClass"  v-html="firstButtonText"></a>
+      <a @click.prevent="selectFirstPage()" @keyup.enter="selectFirstPage()" :class="pageLinkClass"  v-html="firstButtonText"></a>
     </li>
 
     <li v-if="!(firstPageSelected() && hidePrevNext)" :class="[prevClass, firstPageSelected() ? disabledClass : '']">
-      <a @click="prevPage()" @keyup.enter="prevPage()" :class="prevLinkClass"  v-html="prevText"></a>
+      <a @click.prevent="prevPage()" @keyup.enter="prevPage()" :class="prevLinkClass"  v-html="prevText"></a>
     </li>
 
     <li v-for="page in pages" :class="[pageClass, page.selected ? activeClass : '', page.disabled ? disabledClass : '', page.breakView ? breakViewClass: '']">
       <a v-if="page.breakView" :class="[pageLinkClass, breakViewLinkClass]" ><slot name="breakViewContent">{{ breakViewText }}</slot></a>
       <a v-else-if="page.disabled" :class="pageLinkClass" >{{ page.content }}</a>
-      <a v-else @click="handlePageSelected(page.index + 1)" @keyup.enter="handlePageSelected(page.index + 1)" :class="pageLinkClass" >{{ page.content }}</a>
+      <a v-else @click.prevent="handlePageSelected(page.index + 1)" @keyup.enter="handlePageSelected(page.index + 1)" :class="pageLinkClass" >{{ page.content }}</a>
     </li>
 
     <li v-if="!(lastPageSelected() && hidePrevNext)" :class="[nextClass, lastPageSelected() ? disabledClass : '']">
-      <a @click="nextPage()" @keyup.enter="nextPage()" :class="nextLinkClass"  v-html="nextText"></a>
+      <a @click.prevent="nextPage()" @keyup.enter="nextPage()" :class="nextLinkClass"  v-html="nextText"></a>
     </li>
 
     <li v-if="firstLastButton" :class="[pageClass, lastPageSelected() ? disabledClass : '']">
-      <a @click="selectLastPage()" @keyup.enter="selectLastPage()" :class="pageLinkClass"  v-html="lastButtonText"></a>
+      <a @click.prevent="selectLastPage()" @keyup.enter="selectLastPage()" :class="pageLinkClass"  v-html="lastButtonText"></a>
     </li>
   </ul>
 
   <div :class="containerClass" v-else>
-    <a v-if="firstLastButton" @click="selectFirstPage()" @keyup.enter="selectFirstPage()" :class="[pageLinkClass, firstPageSelected() ? disabledClass : '']"  v-html="firstButtonText"></a>
-    <a v-if="!(firstPageSelected() && hidePrevNext)" @click="prevPage()" @keyup.enter="prevPage()" :class="[prevLinkClass, firstPageSelected() ? disabledClass : '']"  v-html="prevText"></a>
+    <a v-if="firstLastButton" @click.prevent="selectFirstPage()" @keyup.enter="selectFirstPage()" :class="[pageLinkClass, firstPageSelected() ? disabledClass : '']"  v-html="firstButtonText"></a>
+    <a v-if="!(firstPageSelected() && hidePrevNext)" @click.prevent="prevPage()" @keyup.enter="prevPage()" :class="[prevLinkClass, firstPageSelected() ? disabledClass : '']"  v-html="prevText"></a>
     <template v-for="page in pages">
       <a v-if="page.breakView" :class="[pageLinkClass, breakViewLinkClass, page.disabled ? disabledClass : '']" ><slot name="breakViewContent">{{ breakViewText }}</slot></a>
       <a v-else-if="page.disabled" :class="[pageLinkClass, page.selected ? activeClass : '', disabledClass]" >{{ page.content }}</a>
-      <a v-else @click="handlePageSelected(page.index + 1)" @keyup.enter="handlePageSelected(page.index + 1)" :class="[pageLinkClass, page.selected ? activeClass : '']">{{ page.content }}</a>
+      <a v-else @click.prevent="handlePageSelected(page.index + 1)" @keyup.enter="handlePageSelected(page.index + 1)" :class="[pageLinkClass, page.selected ? activeClass : '']">{{ page.content }}</a>
     </template>
-    <a v-if="!(lastPageSelected() && hidePrevNext)" @click="nextPage()" @keyup.enter="nextPage()" :class="[nextLinkClass, lastPageSelected() ? disabledClass : '']"  v-html="nextText"></a>
-    <a v-if="firstLastButton" @click="selectLastPage()" @keyup.enter="selectLastPage()" :class="[pageLinkClass, lastPageSelected() ? disabledClass : '']"  v-html="lastButtonText"></a>
+    <a v-if="!(lastPageSelected() && hidePrevNext)" @click.prevent="nextPage()" @keyup.enter="nextPage()" :class="[nextLinkClass, lastPageSelected() ? disabledClass : '']"  v-html="nextText"></a>
+    <a v-if="firstLastButton" @click.prevent="selectLastPage()" @keyup.enter="selectLastPage()" :class="[pageLinkClass, lastPageSelected() ? disabledClass : '']"  v-html="lastButtonText"></a>
   </div>
 </template>
 
